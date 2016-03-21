@@ -1,0 +1,18 @@
+--cpu Cortex-M0
+".\_build\main.o"
+".\_build\app_uart_fifo.o"
+".\_build\nrf_delay.o"
+".\_build\nrf_drv_common.o"
+".\_build\nrf_drv_twi.o"
+".\_build\nrf_drv_uart.o"
+".\_build\app_error.o"
+".\_build\app_fifo.o"
+".\_build\app_util_platform.o"
+".\_build\nrf_assert.o"
+".\_build\retarget.o"
+".\_build\arm_startup_nrf51.o"
+".\_build\system_nrf51.o"
+--library_type=microlib --strict --scatter ".\_build\nrf51422_xxac.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\_build\nrf51422_xxac.map" -o .\_build\nrf51422_xxac.axf
