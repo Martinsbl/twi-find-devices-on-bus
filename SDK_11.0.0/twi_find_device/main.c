@@ -38,8 +38,8 @@
 
 nrf_drv_twi_t twi_instance = NRF_DRV_TWI_INSTANCE(0);
 
-uint8_t device_address = 0;
-bool device_found = false;
+uint8_t device_address = 0; // Address used to temporarily store the current address being checked
+bool device_found = false; 
 
 
 /**
@@ -98,6 +98,7 @@ void twi_handler(nrf_drv_twi_evt_t const * p_event, void * p_context)
     switch(p_event->type)
     {
         case NRF_DRV_TWI_EVT_DONE:
+            // If EVT_DONE (event done) is received a device is found and responding on that particular address
             printf("\r\n!****************************!\r\nDevice found at 7-bit address: %#x!\r\n!****************************!\r\n\r\n", device_address);
             device_found = true;
             break;
@@ -144,14 +145,19 @@ int main(void)
     twi_init();
     
     uint8_t dummy_data = 0x55;
+    // Itterate through all possible 7-bit TWI addresses
     for(uint8_t i = 0; i <= 0x7F; i++)
     {
         device_address = i;
+        // Send dummy data. If a device is present on this particular address a TWI EVT_DONE event is 
+        // received in the twi event handler and a message is printed to UART
         nrf_drv_twi_tx(&twi_instance, i, &dummy_data, 1, false);
+        // Delay 10 ms to allow TWI transfer to complete and UART to print messages before starting new transfer
         nrf_delay_ms(10);
     }
     if(device_found)
     {
+        // Blinke LED_1 rapidly if device is found
         while(true)
         {
             nrf_gpio_pin_toggle(LED_1);
@@ -160,6 +166,7 @@ int main(void)
     }
     else
     {
+        // Disable LED_1 if device is NOT found
         nrf_gpio_cfg_default(LED_1);
         while(true)
         {
