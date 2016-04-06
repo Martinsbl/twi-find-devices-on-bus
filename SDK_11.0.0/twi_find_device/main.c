@@ -168,6 +168,7 @@ int main(void)
     {
         // Disable LED_1 if device is NOT found
         nrf_gpio_cfg_default(LED_1);
+        printf("*****************\n\rNO DEVICES FOUND!\r\n*****************\n\r");
         while(true)
         {
             ;
