@@ -13,5 +13,5 @@ If the example cannot find any devices then double check, and then triple check,
 # Disclaimer
 <b>
  * The example is not extensively tested
- * NO WARRANTY of ANY KIND is provided. *
+ * NO WARRANTY of ANY KIND is provided.
  </b>
