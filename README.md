@@ -9,6 +9,7 @@ If the example cannot find any devices then double check, and then triple check,
 # Tested on:
 * nRF51 DK (PCA10028)
 * nRF52 DK (PCA10040)
+* SDK 0.9.2 tested only on PCA10040. NOT tested on PCA10036.
 
 # Disclaimer
 <b>
