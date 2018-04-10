@@ -1,4 +1,5 @@
 # Simplistic code for nRF52 used to find and debug TWI devices
+<b> WARNING: As of SDK 14 there is an example included in Nordic's SDK that does this better. </b>
 Example code meant to be used to debug TWI applications. It is just a simple application that scans through all possible 7-bits TWI address. If a device is found on a particular address the example prints out the address on a UART terminal. This is the exact address you should pass to the TWI drivers in the SDK. 
 
 If the example cannot find any devices then double check, and then triple check, that:
